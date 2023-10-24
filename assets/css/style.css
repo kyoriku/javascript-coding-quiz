@@ -46,3 +46,9 @@ header h1 {
   background-color: orange;
   cursor: pointer;
 }
+
+#quiz-game {
+  padding: 20px;
+  font-size: 32px;
+  text-align: center;
+}

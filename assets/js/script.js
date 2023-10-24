@@ -2,7 +2,9 @@ document.getElementById("start-button").addEventListener(
   "click",
   () => {
     document.getElementById("pregame").hidden = true;
-  }
+    document.getElementById("quiz-game").hidden = false;
+  },
+  false,
 );
 
 document.getElementById("start-button").addEventListener("click", function(){
