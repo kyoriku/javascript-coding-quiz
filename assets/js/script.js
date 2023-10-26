@@ -1,22 +1,22 @@
-var pregameEl = document.getElementById("pregame");
-var timerEl = document.getElementById("timer");
-var startButtonEl = document.getElementById("start-button")
+var pregameElement = document.getElementById("pre-game");
+var timerElement = document.getElementById("timer");
+var startButtonElement = document.getElementById("start-button")
 
 var timer = 75;
 
 function startQuiz() {
-  pregameEl.hidden = true;
-  timerStart();
+  pregameElement.hidden = true;
+  startTimer();
   showQuiz();
 }
 
-function timerStart() {
+function startTimer() {
   var timerInterval = setInterval(function() {
-    timerEl.textContent = "Time: " + timer;
+    timerElement.textContent = "Time: " + timer;
     timer--;
     if (timer < 0) {
       clearInterval(timerInterval);
-      timerEl.textContent = "Time is up!"
+      timerElement.textContent = "Time is up!"
     }
   }, 1000);
 }
@@ -28,7 +28,7 @@ function showQuiz() {
   h1El.setAttribute("style", "margin:auto; padding-top:40px; width:50%");
 }
 
-var quizQuestion = "Commonly used datatypes DO NOT include:"
+var quizQuestion = "Commonly used datatypes DO NOT include:";
 /* var quizQuestion = [
 {
     question: "Commonly used datatypes DO NOT include:",
@@ -37,4 +37,4 @@ var quizQuestion = "Commonly used datatypes DO NOT include:"
 },
 ] */
 
-startButtonEl.addEventListener("click", startQuiz)
+startButtonElement.addEventListener("click", startQuiz)
