@@ -5,7 +5,7 @@ var startButtonElement = document.getElementById("start-button")
 var timer = 75;
 
 function startQuiz() {
-  pregameElement.hidden = true;
+  hideElement(pregameElement);
   startTimer();
   showQuiz();
 }
@@ -36,5 +36,9 @@ var quizQuestion = "Commonly used datatypes DO NOT include:";
     answer: "3. alerts"
 },
 ] */
+
+function hideElement(element) {
+  element.setAttribute("class", "hide");
+}
 
 startButtonElement.addEventListener("click", startQuiz)
