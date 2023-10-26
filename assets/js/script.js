@@ -2,11 +2,13 @@
 var pregameElement = document.getElementById('pre-game');
 var timerElement = document.getElementById('timer');
 var startButtonElement = document.getElementById('start-button')
+var quizQuestionsElement = document.getElementById('quiz-questions');
 var timer = 75;
 
 // Function to start the quiz
 function startQuiz() {
   hideElement(pregameElement);
+  showElement(quizQuestionsElement)
   startTimer();
   showQuiz();
 }
@@ -30,10 +32,8 @@ function showQuiz() {
   h1El.setAttribute('style', 'margin:auto; padding-top:40px; width:50%');
 }
 
-var quizQuestion = 'Commonly used datatypes DO NOT include:';
-
 // Quiz questions
-var quiz = [
+var quizQuestion = [
   {
     question: 'Commonly used datatypes DO NOT include:',
     choices: ['1. string', '2. boolean', '3. alerts', '4. numbers'],
@@ -64,6 +64,11 @@ var quiz = [
 // Function to hide an element
 function hideElement(element) {
   element.setAttribute('class', 'hide');
+}
+
+// Function to show an element
+function showElement(element) {
+  element.removeAttribute('class', 'hide');
 }
 
 // Event listeners
