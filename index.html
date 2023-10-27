@@ -11,6 +11,8 @@
     <a href="#">View high scores</a>
     <h1 id="timer">Time: </h1>
   </header>
+
+  <!-- Pre game section -->
   <section id="pre-game">
     <h2> Coding Quiz Challenge</h2>
     <p>Try to answer the following code-related questions within the time limit.<br/>
@@ -18,10 +20,13 @@
     </p>
     <button id="start-button" class="btn">Start Quiz</button>
   </section>
+
+  <!-- Quiz content section -->
   <section id="the-game">
     <section id="quiz-content" hidden>
       <section id="questions"></section>
-      <section id="choices"></section>
+      <section id="choices" class="btn-layout"></section>
+      <section id="answer"></section>
     </section>
   </section>
   <script src="./assets/js/script.js"></script>

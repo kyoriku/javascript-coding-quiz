@@ -38,9 +38,9 @@ header h1 {
 }
 
 .btn {
-  background-color: blue;
+  background-color: #008080;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 15px;
   color: white;
   font-size: 16px;
   padding: 10px 10px;
@@ -48,12 +48,15 @@ header h1 {
 }
 
 .btn:hover {
-  background-color: orange;
+  background-color: #800000;
   cursor: pointer;
 }
 
-.hide {
-  display: none
+.btn-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
 }
 
 #the-game {
@@ -67,3 +70,13 @@ header h1 {
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+h4 {
+  font-style: italic;
+  color: gray;
+  padding: 20px 10px;
+}
+
+/* .hide {
+  display: none
+} */

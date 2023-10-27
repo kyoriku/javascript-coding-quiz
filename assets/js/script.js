@@ -5,6 +5,7 @@ var startButtonElement = document.getElementById('start-button');
 var quizContentElement = document.getElementById('quiz-content');
 var questionsElement = document.getElementById('questions');
 var choicesElement = document.getElementById('choices');
+var answerElement = document.getElementById('answer');
 var timer = 75;
 var availableQuestions = [];
 var currentQuestion = {};
@@ -39,7 +40,30 @@ function displayQuestion() {
     var button = document.createElement('button');
     button.innerText = currentQuestion.choices[i];
     button.setAttribute("class", "btn");
+    button.addEventListener('click', function() {
+      checkAnswer(choices);
+    })
     choicesElement.appendChild(button);
+  }
+}
+
+// Function to check answer
+function checkAnswer(choices) {
+  var selectedElement = event.target;
+  var selected = selectedElement.innerText;
+  if (answerElement.firstChild !== null) {
+    answerElement.removeChild(answerElement.firstChild);
+  }
+  if (selected === currentQuestion.answer) {
+    var resultElement = document.createElement('h4');
+    resultElement.innerText = "Correct!";
+    answerElement.appendChild(resultElement);
+  }
+  else {
+    var resultElement = document.createElement('h4');
+    resultElement.innerText = "Wrong!";
+    answerElement.appendChild(resultElement);
+    timer -= 10;
   }
 }
 
@@ -52,8 +76,8 @@ var quizQuestions = [
   },
   {
     question: 'How do you write "Hello, World!" to the console in JavaScript?',
-    choices: ['1. console.write("Hello, World!");', '2. print("Hello, World!");', '3. console.log("Hello, World!");', '4. alert("Hello, World!");'],
-    answer: '3. console.log("Hello, World!")'
+    choices: ['1. console.log("Hello, World!");', '2. print("Hello, World!");', '3. console.write("Hello, World!");', '4. alert("Hello, World!");'],
+    answer: '1. console.log("Hello, World!");'
   },
   {
     question: 'The condition in an if/else statement is enclosed with _____',
@@ -61,7 +85,7 @@ var quizQuestions = [
     answer: '3. (parenthesis)'
   },
   {
-    question: 'What is the correct way to comment a single line of code in JavaScript?',
+    question: 'What is the correct way to comment A SINGLE LINE of code in JavaScript?',
     choices: ['1. <!--Comment-->', '2. // Comment', '3. /* Comment */', '4. # Comment'],
     answer: '2. // Comment'
   },
