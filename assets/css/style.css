@@ -11,7 +11,7 @@ header {
 }
 
 header a {
-  font-size: 20px;
+  font-size: 16px;
   text-decoration: none;
 }
 
@@ -21,7 +21,7 @@ header a:hover {
 }
 
 header h1 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: lighter;
 }
 
@@ -30,7 +30,7 @@ header h1 {
 }
 
 #pre-game h2 {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 #pre-game p {
@@ -44,6 +44,7 @@ header h1 {
   color: white;
   font-size: 16px;
   padding: 10px 10px;
+  text-align: start;
 }
 
 .btn:hover {
@@ -55,6 +56,14 @@ header h1 {
   display: none
 }
 
-#quiz-questions {
-  text-align: center;
+#the-game {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#questions {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
