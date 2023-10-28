@@ -27,6 +27,7 @@ function startTimer() {
     timerElement.textContent = 'Time: ' + timer;
     timer--;
     if (timer < 0) {
+      postGame();
       clearInterval(timerInterval);
       timerElement.textContent = 'Time is up!'
     }
@@ -50,24 +51,19 @@ function displayQuestion() {
 }
 
 // Function to check answer
-function checkAnswer(choices) {
-  var selectedElement = event.target;
-  var selected = selectedElement.innerText;
-  if (answerElement.firstChild !== null) {
-    answerElement.removeChild(answerElement.firstChild);
-  }
+function checkAnswer() {
+  var selected = event.target.innerText;
+  answerElement.innerHTML = '';
+  var resultElement = document.createElement('h4');
   if (selected === currentQuestion.answer) {
-    var resultElement = document.createElement('h4');
     resultElement.innerText = "Correct!";
     resultElement.style.color = "Limegreen";
-    answerElement.appendChild(resultElement);
   } else {
-    var resultElement = document.createElement('h4');
     resultElement.innerText = "Wrong!";
     resultElement.style.color = "Red";
-    answerElement.appendChild(resultElement);
     timer -= 10;
   }
+  answerElement.appendChild(resultElement);
 }
 
 // Function to display the next question
