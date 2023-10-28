@@ -29,7 +29,6 @@ function startTimer() {
     if (timer < 0) {
       postGame();
       clearInterval(timerInterval);
-      timerElement.textContent = 'Time is up!'
     }
   }, 1000);
 }
@@ -83,6 +82,7 @@ function nextQuestions() {
 function postGame() {
   quizContentElement.hidden = true;
   postGameElement.hidden = false;
+  timer = 0;
 }
 
 // Quiz questions
