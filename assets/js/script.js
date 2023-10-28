@@ -6,6 +6,7 @@ var quizContentElement = document.getElementById('quiz-content');
 var questionsElement = document.getElementById('questions');
 var choicesElement = document.getElementById('choices');
 var answerElement = document.getElementById('answer');
+var postGameElement = document.getElementById('post-game');
 var timer = 75;
 var availableQuestions = [];
 var currentQuestion = {};
@@ -77,7 +78,15 @@ function nextQuestions() {
       choicesElement.removeChild(choicesElement.firstChild);
     }
     displayQuestion();  
+  } else {
+    postGame();
   }
+}
+
+// Function for end of the quiz
+function postGame() {
+  quizContentElement.hidden = true;
+  postGameElement.hidden = false;
 }
 
 // Quiz questions
