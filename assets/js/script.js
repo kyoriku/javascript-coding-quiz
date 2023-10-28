@@ -42,6 +42,7 @@ function displayQuestion() {
     button.setAttribute("class", "btn");
     button.addEventListener('click', function() {
       checkAnswer(choices);
+      nextQuestions();
     })
     choicesElement.appendChild(button);
   }
@@ -57,13 +58,25 @@ function checkAnswer(choices) {
   if (selected === currentQuestion.answer) {
     var resultElement = document.createElement('h4');
     resultElement.innerText = "Correct!";
+    resultElement.style.color = "Limegreen";
     answerElement.appendChild(resultElement);
-  }
-  else {
+  } else {
     var resultElement = document.createElement('h4');
     resultElement.innerText = "Wrong!";
+    resultElement.style.color = "Red";
     answerElement.appendChild(resultElement);
     timer -= 10;
+  }
+}
+
+// Function to display the next question
+function nextQuestions() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < availableQuestions.length) {
+    while (choicesElement.firstChild){
+      choicesElement.removeChild(choicesElement.firstChild);
+    }
+    displayQuestion();  
   }
 }
 

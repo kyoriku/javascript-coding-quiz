@@ -60,8 +60,10 @@ header h1 {
 }
 
 #the-game {
-  display: flex;
+  display: grid;
+  grid-template-columns: .5fr;
   justify-content: center;
+  margin: 5px;
   padding: 20px;
 }
 
