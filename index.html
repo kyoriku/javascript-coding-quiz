@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <a href="#">View high scores</a>
+    <a href="#" id="view-high-scores">View high scores</a>
     <h1 id="timer">Time: 0</h1>
   </header>
 
@@ -28,9 +28,16 @@
       <section id="choices" class="btn-layout"></section>
       <section id="answer"></section>
     </section>
+
+    <!--- Post game section-->
     <section id="post-game" hidden>
       <h3>All done!</h3>
+      <p>Your final score is <span id="score"></span></p>
+      <label>Enter initials: </label>
+      <input type="initials" name="initials" />
+      <button id="submit" class="btn">Submit</button>
     </section>
+
   </section>
   <script src="./assets/js/script.js"></script>
 </body>

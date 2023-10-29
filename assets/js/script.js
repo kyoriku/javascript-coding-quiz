@@ -7,10 +7,13 @@ var questionsElement = document.getElementById('questions');
 var choicesElement = document.getElementById('choices');
 var answerElement = document.getElementById('answer');
 var postGameElement = document.getElementById('post-game');
+var submitButtonElement = document.getElementById('submit');
+var scoreElement = document.getElementById('score');
 var timer = 75;
 var availableQuestions = [];
 var currentQuestion = {};
 var currentQuestionIndex = 0;
+var score = 0;
 
 // Function to start quiz
 function startQuiz() {
@@ -23,10 +26,11 @@ function startQuiz() {
 
 // Function to start timer
 function startTimer() {
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
     timerElement.textContent = 'Time: ' + timer;
     timer--;
     if (timer < 0) {
+      score = 0;
       postGame();
       clearInterval(timerInterval);
     }
@@ -74,15 +78,27 @@ function nextQuestions() {
     }
     displayQuestion();  
   } else {
+    calculateScore();
     postGame();
+    clearInterval(timerInterval);
   }
 }
 
 // Function for end of the quiz
 function postGame() {
+  timerElement.hidden = true;
   quizContentElement.hidden = true;
   postGameElement.hidden = false;
-  timer = 0;
+  scoreElement.textContent = score + ".";
+}
+
+// Function to calculate and return the score
+function calculateScore() {
+  if (timer < 0) {
+      timer = 0;
+  }
+  return score = timer;
+  
 }
 
 // Quiz questions
@@ -123,16 +139,6 @@ var quizQuestions = [
     answer: '4. console.log'
   },
 ] 
-
-/* // Function to hide an element
-function hideElement(element) {
-  element.setAttribute('class', 'hide');
-}
-
-// Function to show an element
-function showElement(element) {
-  element.removeAttribute('class', 'hide');
-} */
 
 // Event listeners
 startButtonElement.addEventListener('click', startQuiz)
