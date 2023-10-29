@@ -8,7 +8,9 @@ var choicesElement = document.getElementById('choices');
 var answerElement = document.getElementById('answer');
 var postGameElement = document.getElementById('post-game');
 var submitButtonElement = document.getElementById('submit');
-var scoreElement = document.getElementById('score');
+var scoreElement = document.getElementById('score'); 
+var scoresElement = document.getElementById('scores');
+var backButtonElement = document.getElementById('back-btn');
 var timer = 75;
 var availableQuestions = [];
 var currentQuestion = {};
@@ -98,7 +100,28 @@ function calculateScore() {
       timer = 0;
   }
   return score = timer;
-  
+}
+
+// Function to save the score
+function saveScore() {
+  scoresElement.hidden = false;
+  postGameElement.hidden = true;
+}
+
+// Function to reset the quiz
+function resetQuiz() {
+  timer = 75;
+  currentQuestionIndex = 0;
+  timerElement.textContent = "Time: " + timer;
+  scoresElement.hidden = true;
+  pregameElement.hidden = false;
+  timerElement.hidden = false;
+  while (choicesElement.firstChild) {
+    choicesElement.removeChild(choicesElement.firstChild);
+  }
+  while (answerElement.firstChild) {
+    answerElement.removeChild(answerElement.firstChild)
+  }
 }
 
 // Quiz questions
@@ -141,4 +164,6 @@ var quizQuestions = [
 ] 
 
 // Event listeners
-startButtonElement.addEventListener('click', startQuiz)
+startButtonElement.addEventListener('click', startQuiz);
+backButtonElement.addEventListener('click', resetQuiz);
+submitButtonElement.addEventListener('click', saveScore);
