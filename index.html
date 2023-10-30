@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <a href="#">View high scores</a>
+    <a href="#high-scores" id="view-high-scores">View high scores</a>
     <h1 id="timer">Time: 75</h1>
   </header>
 
@@ -41,6 +41,8 @@
     <!-- Quiz score section -->
     <section id="scores" hidden>
       <h3> High Scores </h3>
+      <span id="no-score" hidden>No scores saved!</span>
+      <ol id="score-list"></ol>
       <button id="back-btn" class="btn">Go Back</button>
       <button id="clear-btn" class="btn">Clear High Scores</button>
     </section>

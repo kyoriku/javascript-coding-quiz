@@ -11,6 +11,11 @@ var submitButtonElement = document.getElementById('submit');
 var scoreElement = document.getElementById('score'); 
 var scoresElement = document.getElementById('scores');
 var backButtonElement = document.getElementById('back-btn');
+var scoreListEl = document.getElementById("score-list");
+var noScoreEl = document.getElementById('no-score');
+var initialsEl = document.getElementById('initials');
+var clearButtonElement = document.getElementById('clear-btn');
+var viewHighScoresButton = document.getElementById('view-high-scores');
 var timer = 75;
 var availableQuestions = [];
 var currentQuestion = {};
@@ -91,6 +96,7 @@ function postGame() {
   timerElement.hidden = true;
   quizContentElement.hidden = true;
   postGameElement.hidden = false;
+  viewHighScoresButton.hidden = true;
   scoreElement.textContent = score + ".";
 }
 
@@ -102,10 +108,26 @@ function calculateScore() {
   return score = timer;
 }
 
+// Function to display the score
+function showScore(s) {
+  postGameElement.hidden = true;
+  quizContentElement.hidden = true;
+  scoreElement.textContent = `${s}.`;
+}
+  
 // Function to save the score
-function saveScore() {
+function saveScore(s) {
   scoresElement.hidden = false;
   postGameElement.hidden = true;
+  var scoreData = {
+    initials: initialsEl.value,
+    score: s,
+  };
+  var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  highScores.push(scoreData);
+  localStorage.setItem('highScores', JSON.stringify(highScores));
+  initialsEl.value = '';
+  fetchHighScores(); 
 }
 
 // Function to reset the quiz
@@ -115,6 +137,7 @@ function resetQuiz() {
   timerElement.textContent = "Time: " + timer;
   scoresElement.hidden = true;
   pregameElement.hidden = false;
+  viewHighScoresButton.hidden = false;
   timerElement.hidden = false;
   while (choicesElement.firstChild) {
     choicesElement.removeChild(choicesElement.firstChild);
@@ -122,6 +145,38 @@ function resetQuiz() {
   while (answerElement.firstChild) {
     answerElement.removeChild(answerElement.firstChild)
   }
+}
+
+// Function to fetch and display high scores 
+function fetchHighScores() {
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const sortedScores = highScores.sort((a, b) => b.score - a.score); 
+  scoreListEl.innerHTML = '';
+  sortedScores.forEach((scoreData) => {
+    const scoreLineEl = document.createElement('li');
+    scoreLineEl.innerText = `${scoreData.initials} - ${scoreData.score}`;
+    scoreListEl.appendChild(scoreLineEl);
+  });
+  viewHighScoresButton.hidden = true;
+}
+
+// Function to clear the score list
+function clearScore() {
+  while (scoreListEl.firstChild) {
+    scoreListEl.removeChild(scoreListEl.firstChild);
+  }
+  noScoreEl.hidden = false;
+  localStorage.clear();
+}
+
+// Function to view high scores
+function viewHighScores() {
+  pregameElement.hidden = true;
+  quizContentElement.hidden = true;
+  pregameElement.hidden = true;
+  noScoreEl.hidden = true;
+  scoresElement.hidden = false;
+  fetchHighScores()
 }
 
 // Quiz questions
@@ -166,4 +221,8 @@ var quizQuestions = [
 // Event listeners
 startButtonElement.addEventListener('click', startQuiz);
 backButtonElement.addEventListener('click', resetQuiz);
-submitButtonElement.addEventListener('click', saveScore);
+clearButtonElement.addEventListener('click', clearScore);
+submitButtonElement.addEventListener('click', () => {
+  saveScore(score);
+});
+viewHighScoresButton.addEventListener('click', viewHighScores);
