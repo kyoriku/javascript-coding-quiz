@@ -139,6 +139,7 @@ function resetQuiz() {
   pregameElement.hidden = false;
   viewHighScoresButton.hidden = false;
   timerElement.hidden = false;
+  noScoreEl.hidden = true;
   while (choicesElement.firstChild) {
     choicesElement.removeChild(choicesElement.firstChild);
   }
@@ -174,7 +175,7 @@ function viewHighScores() {
   pregameElement.hidden = true;
   quizContentElement.hidden = true;
   pregameElement.hidden = true;
-  noScoreEl.hidden = true;
+  timerElement.hidden = true;
   scoresElement.hidden = false;
   fetchHighScores()
 }
@@ -215,6 +216,11 @@ var quizQuestions = [
     question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
     choices: ['1. JavaScript', '2. terminal/bash', '3. for loops', '4. console.log'],
     answer: '4. console.log'
+  },
+  {
+    question: 'Which keyword is used to declare a variable in JavaScript?',
+    choices: ['1. var', '2. int', '3. string', '4. true'],
+    answer: '1. var'
   },
 ] 
 
