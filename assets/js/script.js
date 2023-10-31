@@ -1,4 +1,5 @@
 // Variable declarations
+var viewHighScoresElement = document.getElementById('view-high-scores');
 var timerElement = document.getElementById('timer');
 var pregameElement = document.getElementById('pre-game');
 var startButtonElement = document.getElementById('start-button');
@@ -7,28 +8,71 @@ var questionsElement = document.getElementById('questions');
 var choicesElement = document.getElementById('choices');
 var answerElement = document.getElementById('answer');
 var postGameElement = document.getElementById('post-game');
-var submitButtonElement = document.getElementById('submit');
-var scoreElement = document.getElementById('score'); 
+var scoreElement = document.getElementById('score');
+var initialsElement = document.getElementById('initials');
+var submitButtonElement = document.getElementById('submit'); 
 var scoresElement = document.getElementById('scores');
+var noScoreElement = document.getElementById('no-score');
+var scoreListElement = document.getElementById("score-list");
 var backButtonElement = document.getElementById('back-btn');
-var scoreListEl = document.getElementById("score-list");
-var noScoreEl = document.getElementById('no-score');
-var initialsEl = document.getElementById('initials');
 var clearButtonElement = document.getElementById('clear-btn');
-var viewHighScoresButton = document.getElementById('view-high-scores');
-var timer = 75;
-var availableQuestions = [];
-var currentQuestion = {};
-var currentQuestionIndex = 0;
-var score = 0;
+var timer = 75;  // Initialize timer to 75 seconds
+var availableQuestions = [];  // Initialize an array to store quiz questions
+var currentQuestion = {};  // Initialize an object to store the current question
+var currentQuestionIndex = 0;  // Initialize the index of the current question
+var score = 0;  // Initialize the player's score
 
-// Function to start quiz
+// Array of quiz questions
+var quizQuestions = [
+  {
+    question: 'Commonly used datatypes DO NOT include:',
+    choices: ['1. string', '2. boolean', '3. alerts', '4. numbers'],
+    answer: '3. alerts'
+  },
+  {
+    question: 'How do you write "Hello, World!" to the console in JavaScript?',
+    choices: ['1. console.log("Hello, World!");', '2. print("Hello, World!");', '3. console.write("Hello, World!");', '4. alert("Hello, World!");'],
+    answer: '1. console.log("Hello, World!");'
+  },
+  {
+    question: 'The condition in an if/else statement is enclosed with _____',
+    choices: ['1. "quotes"', '2. {curly braces}', '3. (parenthesis)', '4. [square brackets]'],
+    answer: '3. (parenthesis)'
+  },
+  {
+    question: 'What is the correct way to comment A SINGLE LINE of code in JavaScript?',
+    choices: ['1. <!--Comment-->', '2. // Comment', '3. /* Comment */', '4. # Comment'],
+    answer: '2. // Comment'
+  },
+  {
+    question: 'Arrays in JavaScript can be used to store _____.',
+    choices: ['1. numbers an strings', '2. booleans', '3. other arrays', '4. all of the above'],
+    answer: '4. all of the above'
+  },
+  {
+    question: 'Which property can you use in order to implement event delegation?',
+    choices: ['1. event.target', '2. event.preventDefault()', '3. event.stopPropagation()', '4. event.addEventListener()'],
+    answer: '1. event.target'
+  },
+  {
+    question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
+    choices: ['1. JavaScript', '2. terminal/bash', '3. for loops', '4. console.log'],
+    answer: '4. console.log'
+  },
+  {
+    question: 'Which keyword is used to declare a variable in JavaScript?',
+    choices: ['1. var', '2. int', '3. string', '4. true'],
+    answer: '1. var'
+  },
+] 
+
+// Function to start the quiz
 function startQuiz() {
-  pregameElement.hidden = true;
-  quizContentElement.hidden = false;
-  availableQuestions = quizQuestions;
-  startTimer();
-  displayQuestion();
+  pregameElement.hidden = true;  // Hide the pregame section
+  quizContentElement.hidden = false;  // Show the quiz content section
+  availableQuestions = quizQuestions;  // Populate available questions with quizQuestions
+  startTimer();  // Start the countdown timer
+  displayQuestion();  // Display the first question
 }
 
 // Function to start timer
@@ -96,7 +140,7 @@ function postGame() {
   timerElement.hidden = true;
   quizContentElement.hidden = true;
   postGameElement.hidden = false;
-  viewHighScoresButton.hidden = true;
+  viewHighScoresElement.hidden = true;
   scoreElement.textContent = score + ".";
 }
 
@@ -120,13 +164,13 @@ function saveScore(s) {
   scoresElement.hidden = false;
   postGameElement.hidden = true;
   var scoreData = {
-    initials: initialsEl.value,
+    initials: initialsElement.value,
     score: s,
   };
   var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
   highScores.push(scoreData);
   localStorage.setItem('highScores', JSON.stringify(highScores));
-  initialsEl.value = '';
+  initialsElement.value = '';
   fetchHighScores(); 
 }
 
@@ -137,9 +181,9 @@ function resetQuiz() {
   timerElement.textContent = "Time: " + timer;
   scoresElement.hidden = true;
   pregameElement.hidden = false;
-  viewHighScoresButton.hidden = false;
+  viewHighScoresElement.hidden = false;
   timerElement.hidden = false;
-  noScoreEl.hidden = true;
+  noScoreElement.hidden = true;
   while (choicesElement.firstChild) {
     choicesElement.removeChild(choicesElement.firstChild);
   }
@@ -152,21 +196,21 @@ function resetQuiz() {
 function fetchHighScores() {
   const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
   const sortedScores = highScores.sort((a, b) => b.score - a.score); 
-  scoreListEl.innerHTML = '';
+  scoreListElement.innerHTML = '';
   sortedScores.forEach((scoreData) => {
     const scoreLineEl = document.createElement('li');
     scoreLineEl.innerText = `${scoreData.initials} - ${scoreData.score}`;
-    scoreListEl.appendChild(scoreLineEl);
+    scoreListElement.appendChild(scoreLineEl);
   });
-  viewHighScoresButton.hidden = true;
+  viewHighScoresElement.hidden = true;
 }
 
 // Function to clear the score list
 function clearScore() {
-  while (scoreListEl.firstChild) {
-    scoreListEl.removeChild(scoreListEl.firstChild);
+  while (scoreListElement.firstChild) {
+    scoreListElement.removeChild(scoreListElement.firstChild);
   }
-  noScoreEl.hidden = false;
+  noScoreElement.hidden = false;
   localStorage.clear();
 }
 
@@ -180,55 +224,11 @@ function viewHighScores() {
   fetchHighScores()
 }
 
-// Quiz questions
-var quizQuestions = [
-  {
-    question: 'Commonly used datatypes DO NOT include:',
-    choices: ['1. string', '2. boolean', '3. alerts', '4. numbers'],
-    answer: '3. alerts'
-  },
-  {
-    question: 'How do you write "Hello, World!" to the console in JavaScript?',
-    choices: ['1. console.log("Hello, World!");', '2. print("Hello, World!");', '3. console.write("Hello, World!");', '4. alert("Hello, World!");'],
-    answer: '1. console.log("Hello, World!");'
-  },
-  {
-    question: 'The condition in an if/else statement is enclosed with _____',
-    choices: ['1. "quotes"', '2. {curly braces}', '3. (parenthesis)', '4. [square brackets]'],
-    answer: '3. (parenthesis)'
-  },
-  {
-    question: 'What is the correct way to comment A SINGLE LINE of code in JavaScript?',
-    choices: ['1. <!--Comment-->', '2. // Comment', '3. /* Comment */', '4. # Comment'],
-    answer: '2. // Comment'
-  },
-  {
-    question: 'Arrays in JavaScript can be used to store _____.',
-    choices: ['1. numbers an strings', '2. booleans', '3. other arrays', '4. all of the above'],
-    answer: '4. all of the above'
-  },
-  {
-    question: 'Which property can you use in order to implement event delegation?',
-    choices: ['1. event.target', '2. event.preventDefault()', '3. event.stopPropagation()', '4. event.addEventListener()'],
-    answer: '1. event.target'
-  },
-  {
-    question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-    choices: ['1. JavaScript', '2. terminal/bash', '3. for loops', '4. console.log'],
-    answer: '4. console.log'
-  },
-  {
-    question: 'Which keyword is used to declare a variable in JavaScript?',
-    choices: ['1. var', '2. int', '3. string', '4. true'],
-    answer: '1. var'
-  },
-] 
-
 // Event listeners
 startButtonElement.addEventListener('click', startQuiz);
 backButtonElement.addEventListener('click', resetQuiz);
 clearButtonElement.addEventListener('click', clearScore);
-submitButtonElement.addEventListener('click', () => {
+submitButtonElement.addEventListener('click', (function() {
   saveScore(score);
-});
-viewHighScoresButton.addEventListener('click', viewHighScores);
+}));
+viewHighScoresElement.addEventListener('click', viewHighScores);

@@ -121,7 +121,7 @@ h4 {
 
 #score-list {
   background-color: lightsteelblue;
-  padding-left: 30px; 
+  padding-left: 40px; 
   margin: 20px 0;
 }
 
@@ -131,9 +131,6 @@ h4 {
 
 #score-list li {
   padding-top: 5px;
-}
-
-#score-list li:nth-child(even) {
   background-color: lightcyan;
 }
 
