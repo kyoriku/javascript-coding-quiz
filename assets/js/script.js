@@ -162,7 +162,6 @@ function calculateScore() {
   return score = timer;  // Calculate the score based on the remaining time
 }
 
-
 // Function to display the score
 function showScore(s) {
   postGameElement.hidden = true;  // Hide the post-game section
@@ -233,6 +232,7 @@ function viewHighScores() {
   timerElement.hidden = true;  // Hide the timer display
   scoresElement.hidden = false;  // Show the high scores section
   fetchHighScores();  // Fetch and display high scores
+  clearInterval(timerInterval);
 }
 
 // Event listeners
