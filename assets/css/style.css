@@ -27,7 +27,7 @@ header {
 }
 
 header a {
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
 }
 
@@ -37,7 +37,7 @@ header a:hover {
 }
 
 header h1 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: lighter;
 }
 

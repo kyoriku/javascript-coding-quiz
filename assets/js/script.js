@@ -232,7 +232,7 @@ function viewHighScores() {
   timerElement.hidden = true;  // Hide the timer display
   scoresElement.hidden = false;  // Show the high scores section
   fetchHighScores();  // Fetch and display high scores
-  clearInterval(timerInterval);
+  clearInterval(timerInterval);  // Stop the timer
 }
 
 // Event listeners
