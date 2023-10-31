@@ -204,11 +204,11 @@ function resetQuiz() {
 
 // Function to fetch and display high scores 
 function fetchHighScores() {
-  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  const sortedScores = highScores.sort((a, b) => b.score - a.score);  // Sort high scores in descending order
+  var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  var sortedScores = highScores.sort((a, b) => b.score - a.score);  // Sort high scores in descending order
   scoreListElement.innerHTML = '';  // Clear the high scores list
   sortedScores.forEach((scoreData) => {
-    const scoreLineEl = document.createElement('li');  // Create a list item for each high score
+    var scoreLineEl = document.createElement('li');  // Create a list item for each high score
     scoreLineEl.innerText = `${scoreData.initials} - ${scoreData.score}`;  // Display the initials and score
     scoreListElement.appendChild(scoreLineEl);  // Add the list item to the high scores list
   });

@@ -153,3 +153,9 @@ h4 {
 #score-list li:nth-child(odd) {
   background-color: powderblue
 }
+
+@media screen and (max-width: 768px) {
+  .btn-layout {
+    width: 100%;
+  }
+}  
