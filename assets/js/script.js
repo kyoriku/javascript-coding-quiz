@@ -122,113 +122,114 @@ function checkAnswer() {
 
 // Function to display the next question
 function nextQuestions() {
-  currentQuestionIndex++;
+  currentQuestionIndex++;  // Move to the next question
   if (currentQuestionIndex < availableQuestions.length) {
     while (choicesElement.firstChild){
-      choicesElement.removeChild(choicesElement.firstChild);
+      choicesElement.removeChild(choicesElement.firstChild);  // Remove previous answer choices
     }
-    displayQuestion();  
+    displayQuestion();  // Display the next question
   } else {
-    calculateScore();
-    postGame();
-    clearInterval(timerInterval);
+    calculateScore();  // Calculate the player's score
+    postGame();  // End the game
+    clearInterval(timerInterval);  // Stop the timer
   }
 }
 
-// Function for end of the quiz
+// Function for the end of the quiz
 function postGame() {
-  timerElement.hidden = true;
-  quizContentElement.hidden = true;
-  postGameElement.hidden = false;
-  viewHighScoresElement.hidden = true;
-  scoreElement.textContent = score + ".";
+  timerElement.hidden = true;  // Hide the timer display
+  quizContentElement.hidden = true;  // Hide the quiz content section
+  viewHighScoresElement.hidden = true;  // Hide the "View High Scores" link
+  postGameElement.hidden = false;  // Show the post-game section
+  scoreElement.textContent = score + ".";  // Display the player's final score
 }
 
-// Function to calculate and return the score
+// Function to calculate and return the player's score
 function calculateScore() {
   if (timer < 0) {
-      timer = 0;
+    timer = 0;  // Ensure the timer is not negative
   }
-  return score = timer;
+  return score = timer;  // Calculate the score based on the remaining time
 }
+
 
 // Function to display the score
 function showScore(s) {
-  postGameElement.hidden = true;
-  quizContentElement.hidden = true;
-  scoreElement.textContent = `${s}.`;
+  postGameElement.hidden = true;  // Hide the post-game section
+  quizContentElement.hidden = true;  // Hide the quiz content section
+  scoreElement.textContent = `${s}.`;  // Display the player's score
 }
   
-// Function to save the score
+// Function to save the player's score
 function saveScore(s) {
-  scoresElement.hidden = false;
-  postGameElement.hidden = true;
+  scoresElement.hidden = false;  // Show the high scores section
+  postGameElement.hidden = true;  // Hide the post-game section
   var scoreData = {
     initials: initialsElement.value,
     score: s,
   };
   var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  highScores.push(scoreData);
-  localStorage.setItem('highScores', JSON.stringify(highScores));
-  initialsElement.value = '';
-  fetchHighScores(); 
+  highScores.push(scoreData);  // Add the score to the high scores
+  localStorage.setItem('highScores', JSON.stringify(highScores));  // Store the high scores in local storage
+  initialsElement.value = '';  // Clear the initials input field
+  fetchHighScores();  // Fetch and display high scores
 }
 
 // Function to reset the quiz
 function resetQuiz() {
-  timer = 75;
-  currentQuestionIndex = 0;
-  timerElement.textContent = "Time: " + timer;
-  scoresElement.hidden = true;
-  pregameElement.hidden = false;
-  viewHighScoresElement.hidden = false;
-  timerElement.hidden = false;
-  noScoreElement.hidden = true;
+  timer = 75;  // Reset the timer to 75 seconds
+  currentQuestionIndex = 0;  // Reset the question index
+  timerElement.textContent = "Time: " + timer;  // Update the timer display
+  scoresElement.hidden = true;  // Hide the high scores section
+  pregameElement.hidden = false;  // Show the pregame section
+  viewHighScoresElement.hidden = false;  // Show the "View High Scores" link
+  timerElement.hidden = false;  // Show the timer display
+  noScoreElement.hidden = true;  // Hide the "No scores saved!" message
   while (choicesElement.firstChild) {
-    choicesElement.removeChild(choicesElement.firstChild);
+    choicesElement.removeChild(choicesElement.firstChild);  // Remove answer choices
   }
   while (answerElement.firstChild) {
-    answerElement.removeChild(answerElement.firstChild)
+    answerElement.removeChild(answerElement.firstChild);  // Clear the answer display
   }
 }
 
 // Function to fetch and display high scores 
 function fetchHighScores() {
   const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-  const sortedScores = highScores.sort((a, b) => b.score - a.score); 
-  scoreListElement.innerHTML = '';
+  const sortedScores = highScores.sort((a, b) => b.score - a.score);  // Sort high scores in descending order
+  scoreListElement.innerHTML = '';  // Clear the high scores list
   sortedScores.forEach((scoreData) => {
-    const scoreLineEl = document.createElement('li');
-    scoreLineEl.innerText = `${scoreData.initials} - ${scoreData.score}`;
-    scoreListElement.appendChild(scoreLineEl);
+    const scoreLineEl = document.createElement('li');  // Create a list item for each high score
+    scoreLineEl.innerText = `${scoreData.initials} - ${scoreData.score}`;  // Display the initials and score
+    scoreListElement.appendChild(scoreLineEl);  // Add the list item to the high scores list
   });
-  viewHighScoresElement.hidden = true;
+  viewHighScoresElement.hidden = true;  // Hide the "View High Scores" link
 }
 
 // Function to clear the score list
 function clearScore() {
   while (scoreListElement.firstChild) {
-    scoreListElement.removeChild(scoreListElement.firstChild);
+    scoreListElement.removeChild(scoreListElement.firstChild);  // Remove all high scores
   }
-  noScoreElement.hidden = false;
-  localStorage.clear();
+  noScoreElement.hidden = false;  // Show the "No scores saved!" message
+  localStorage.clear();  // Clear high scores from local storage
 }
 
 // Function to view high scores
 function viewHighScores() {
-  pregameElement.hidden = true;
-  quizContentElement.hidden = true;
-  pregameElement.hidden = true;
-  timerElement.hidden = true;
-  scoresElement.hidden = false;
-  fetchHighScores()
+  pregameElement.hidden = true;  // Hide the pregame section
+  quizContentElement.hidden = true;  // Hide the quiz content section
+  pregameElement.hidden = true;  // Hide the pregame section
+  timerElement.hidden = true;  // Hide the timer display
+  scoresElement.hidden = false;  // Show the high scores section
+  fetchHighScores();  // Fetch and display high scores
 }
 
 // Event listeners
 startButtonElement.addEventListener('click', startQuiz);
 backButtonElement.addEventListener('click', resetQuiz);
 clearButtonElement.addEventListener('click', clearScore);
-submitButtonElement.addEventListener('click', (function() {
-  saveScore(score);
-}));
+submitButtonElement.addEventListener('click', function() {
+  saveScore(score);  // Save the player's score
+});
 viewHighScoresElement.addEventListener('click', viewHighScores);
