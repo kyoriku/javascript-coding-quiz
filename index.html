@@ -11,43 +11,44 @@
     <a href="#high-scores" id="view-high-scores">View high scores</a>
     <h1 id="timer">Time: 75</h1>
   </header>
-
-  <!-- Pre game section -->
-  <section id="pre-game">
-    <h2> Coding Quiz Challenge</h2>
-    <p>Try to answer the following code-related questions within the time limit.<br/>
-      Keep in mind that incorrect answers will penalize your score/time by 10 seconds!
-    </p>
-    <button id="start-button" class="btn">Start Quiz</button>
-  </section>
-
-  <!-- Quiz content section -->
-  <section id="the-game">
-    <section id="quiz-content" hidden>
-      <section id="questions"></section>
-      <section id="choices" class="btn-layout"></section>
-      <section id="answer"></section>
+  <main>
+    <!-- Pre game section -->
+    <section id="pre-game">
+      <h2> Coding Quiz Challenge</h2>
+      <p>Try to answer the following code-related questions within the time limit.<br/>
+        Keep in mind that incorrect answers will penalize your score/time by 10 seconds!
+      </p>
+      <button id="start-button" class="btn">Start Quiz</button>
     </section>
 
-    <!-- Post game section -->
-    <section id="post-game" hidden>
-      <h3>All done!</h3>
-      <p>Your final score is <span id="score"></span></p>
-      <label>Enter initials: </label>
-      <input type="initials" name="initials" id="initials" placeholder=""/>
-      <button id="submit" class="btn">Submit</button>
-    </section>
+    <!-- Quiz content section -->
+    <section id="the-game">
+      <section id="quiz-content" hidden>
+        <section id="questions"></section>
+        <section id="choices" class="btn-layout"></section>
+        <section id="answer"></section>
+      </section>
 
-    <!-- Quiz score section -->
-    <section id="scores" hidden>
-      <h3> High Scores </h3>
-      <p id="no-score" hidden>No scores saved!</p>
-      <ol id="score-list"></ol>
-      <button id="back-btn" class="btn">Go Back</button>
-      <button id="clear-btn" class="btn">Clear High Scores</button>
-    </section>
+      <!-- Post game section -->
+      <section id="post-game" hidden>
+        <h3>All done!</h3>
+        <p>Your final score is <span id="score"></span></p>
+        <label>Enter initials: </label>
+        <input type="initials" name="initials" id="initials" placeholder=""/>
+        <button id="submit" class="btn">Submit</button>
+      </section>
 
-  </section>
+      <!-- Quiz score section -->
+      <section id="scores" hidden>
+        <h3> High Scores </h3>
+        <p id="no-score" hidden>No scores saved!</p>
+        <ol id="score-list"></ol>
+        <button id="back-btn" class="btn">Go Back</button>
+        <button id="clear-btn" class="btn">Clear High Scores</button>
+      </section>
+
+    </section>
+  </main>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>

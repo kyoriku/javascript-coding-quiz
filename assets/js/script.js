@@ -75,49 +75,49 @@ function startQuiz() {
   displayQuestion();  // Display the first question
 }
 
-// Function to start timer
+// Function to start the countdown timer
 function startTimer() {
   timerInterval = setInterval(function() {
-    timerElement.textContent = 'Time: ' + timer;
-    timer--;
+    timerElement.textContent = 'Time: ' + timer;  // Update the displayed timer
+    timer--;  // Decrement the timer
     if (timer < 0) {
-      score = 0;
-      postGame();
-      clearInterval(timerInterval);
+      score = 0;  // If time is up, set the score to 0
+      postGame();  // End the game
+      clearInterval(timerInterval);  // Stop the timer
     }
   }, 1000);
 }
 
-// Function to display question
+// Function to display a question
 function displayQuestion() {
-  currentQuestion = availableQuestions[currentQuestionIndex];
-  questionsElement.innerText = currentQuestion.question;
+  currentQuestion = availableQuestions[currentQuestionIndex];  // Get the current question
+  questionsElement.innerText = currentQuestion.question;  // Display the question text
   for (var i = 0; i < currentQuestion.choices.length; i++) {
-    var button = document.createElement('button');
-    button.innerText = currentQuestion.choices[i];
-    button.setAttribute("class", "btn");
+    var button = document.createElement('button');  // Create a button for each answer choice
+    button.innerText = currentQuestion.choices[i];  // Set the button text
+    button.setAttribute("class", "btn");  // Add a CSS class
     button.addEventListener('click', function() {
-      checkAnswer(choices);
-      nextQuestions();
-    })
-    choicesElement.appendChild(button);
+      checkAnswer(choices);  // Check the selected answer
+      nextQuestions();  // Proceed to the next question
+    });
+    choicesElement.appendChild(button);  // Add the button to the choices section
   }
 }
 
-// Function to check answer
+// Function to check the answer
 function checkAnswer() {
-  var selected = event.target.innerText;
-  answerElement.innerHTML = '';
-  var resultElement = document.createElement('h4');
+  var selected = event.target.innerText;  // Get the selected answer
+  answerElement.innerHTML = '';  // Clear the answer display
+  var resultElement = document.createElement('h4');  // Create an element to display the result
   if (selected === currentQuestion.answer) {
-    resultElement.innerText = "Correct!";
-    resultElement.style.color = "Limegreen";
+    resultElement.innerText = "Correct!";  // If the answer is correct
+    resultElement.style.color = "Limegreen";  // Set text color to green
   } else {
-    resultElement.innerText = "Wrong!";
-    resultElement.style.color = "Red";
-    timer -= 10;
+    resultElement.innerText = "Wrong!";  // If the answer is wrong
+    resultElement.style.color = "Red";  // Set text color to red
+    timer -= 10;  // Subtract 10 seconds from the timer
   }
-  answerElement.appendChild(resultElement);
+  answerElement.appendChild(resultElement);  // Display the result
 }
 
 // Function to display the next question

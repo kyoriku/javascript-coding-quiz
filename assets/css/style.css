@@ -5,6 +5,21 @@
   padding: 0;
 }
 
+body {
+  background-color: #f9fbfd;
+}
+
+main {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 30px 40px;
+}
+
 /* Header section */
 header {
   display: flex;
@@ -32,11 +47,12 @@ header h1 {
   text-align: center;
 }
 
-#pre-game h2 {
-  padding-top: 20px;
-}
+ #pre-game h2 {
+  padding-top: 40px;
+} 
 
 #pre-game p {
+  font-size: 18px;
   padding: 20px 0;
 }
 
@@ -66,7 +82,7 @@ header h1 {
 /* The game section */
 #the-game {
   display: grid;
-  grid-template-columns: .5fr;
+  grid-template-columns: .75fr;
   justify-content: center;
   margin: 5px;
   padding: 20px;
