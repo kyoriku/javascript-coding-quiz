@@ -2,7 +2,7 @@
 This application is a timed coding quiz with multiple-choice questions that features dynamically updated HTML and CSS powered by JavaScript.
 
 ## Usage
->
+> [Link to deployed application](https://kyoriku.github.io/code-quiz/)
 
 ![Screenshot](assets/images/codingquiz.png)
 
