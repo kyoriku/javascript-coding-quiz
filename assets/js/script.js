@@ -55,9 +55,19 @@ var quizQuestions = [
     answer: '1. event.target'
   },
   {
+    question: 'Which operator is used for strict equality comparison in JavaScript?',
+    choices: ['1. ==', '2. ===', '3. =', '4. !='],
+    answer: '2. ==='
+  },
+  {
     question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
     choices: ['1. JavaScript', '2. terminal/bash', '3. for loops', '4. console.log'],
     answer: '4. console.log'
+  },
+  {
+    question: 'What is the result of the expression: 5 + "3" in JavaScript?',
+    choices: ['1. 53', '2. 8', '3. "53"', '4. NaN'],
+    answer: '3. "53"'
   },
   {
     question: 'Which keyword is used to declare a variable in JavaScript?',
