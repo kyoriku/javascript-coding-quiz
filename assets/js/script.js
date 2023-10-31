@@ -78,7 +78,7 @@ var quizQuestions = [
 
 // Function to start the quiz
 function startQuiz() {
-  pregameElement.hidden = true;  // Hide the pregame section
+  pregameElement.hidden = true;  // Hide the pre-game section
   quizContentElement.hidden = false;  // Show the quiz content section
   availableQuestions = quizQuestions;  // Populate available questions with quizQuestions
   startTimer();  // Start the countdown timer
@@ -172,8 +172,8 @@ function showScore(s) {
   
 // Function to save the player's score
 function saveScore(s) {
-  scoresElement.hidden = false;  // Show the high scores section
   postGameElement.hidden = true;  // Hide the post-game section
+  scoresElement.hidden = false;  // Show the high scores section
   var scoreData = {
     initials: initialsElement.value,
     score: s,
@@ -191,10 +191,10 @@ function resetQuiz() {
   currentQuestionIndex = 0;  // Reset the question index
   timerElement.textContent = "Time: " + timer;  // Update the timer display
   scoresElement.hidden = true;  // Hide the high scores section
-  pregameElement.hidden = false;  // Show the pregame section
+  noScoreElement.hidden = true;  // Hide the "No scores saved!" message
+  pregameElement.hidden = false;  // Show the pre-game section
   viewHighScoresElement.hidden = false;  // Show the "View High Scores" link
   timerElement.hidden = false;  // Show the timer display
-  noScoreElement.hidden = true;  // Hide the "No scores saved!" message
   while (choicesElement.firstChild) {
     choicesElement.removeChild(choicesElement.firstChild);  // Remove answer choices
   }
@@ -227,9 +227,9 @@ function clearScore() {
 
 // Function to view high scores
 function viewHighScores() {
-  pregameElement.hidden = true;  // Hide the pregame section
+  pregameElement.hidden = true;  // Hide the pre-game section
   quizContentElement.hidden = true;  // Hide the quiz content section
-  pregameElement.hidden = true;  // Hide the pregame section
+  pregameElement.hidden = true;  // Hide the pre-game section
   timerElement.hidden = true;  // Hide the timer display
   scoresElement.hidden = false;  // Show the high scores section
   fetchHighScores();  // Fetch and display high scores
