@@ -16,6 +16,7 @@ var noScoreElement = document.getElementById('no-score');
 var scoreListElement = document.getElementById("score-list");
 var backButtonElement = document.getElementById('back-btn');
 var clearButtonElement = document.getElementById('clear-btn');
+var footerElement = document.getElementById('footer');
 var timer = 75;  // Initialize timer to 75 seconds
 var availableQuestions = [];  // Initialize an array to store quiz questions
 var currentQuestion = {};  // Initialize an object to store the current question
@@ -79,6 +80,7 @@ var quizQuestions = [
 // Function to start the quiz
 function startQuiz() {
   pregameElement.hidden = true;  // Hide the pre-game section
+  footerElement.hidden = true ;  // Hide the footer section
   quizContentElement.hidden = false;  // Show the quiz content section
   availableQuestions = quizQuestions;  // Populate available questions with quizQuestions
   startTimer();  // Start the countdown timer
@@ -194,6 +196,7 @@ function resetQuiz() {
   pregameElement.hidden = false;  // Show the pre-game section
   viewHighScoresElement.hidden = false;  // Show the "View High Scores" link
   timerElement.hidden = false;  // Show the timer display
+  footerElement.hidden = false;  // Show the footer section
   while (choicesElement.firstChild) {
     choicesElement.removeChild(choicesElement.firstChild);  // Remove answer choices
   }

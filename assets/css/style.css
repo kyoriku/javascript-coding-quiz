@@ -154,6 +154,11 @@ h4 {
   background-color: powderblue
 }
 
+footer {
+  text-align: center;
+  padding-top: 295px;
+}
+
 @media screen and (max-width: 768px) {
   .btn-layout {
     width: 100%;
