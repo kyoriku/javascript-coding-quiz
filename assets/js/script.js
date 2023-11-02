@@ -233,6 +233,7 @@ function viewHighScores() {
   quizContentElement.hidden = true;  // Hide the quiz content section
   pregameElement.hidden = true;  // Hide the pre-game section
   timerElement.hidden = true;  // Hide the timer display
+  footerElement.hidden = true ;  // Hide the footer section
   scoresElement.hidden = false;  // Show the high scores section
   fetchHighScores();  // Fetch and display high scores
   clearInterval(timerInterval);  // Stop the timer
