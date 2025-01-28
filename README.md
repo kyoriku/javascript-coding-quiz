@@ -56,49 +56,43 @@ Visit the live application at: [kyoriku.github.io/javascript-coding-quiz](https:
 ![JavaScript Coding Quiz Screenshot 3](assets/screenshots/JavaScriptCodingQuiz3.jpg)
 
 ## Technical Details
-The quiz application leverages several key web technologies and APIs:
+This coding quiz was built using the following technologies and features:
 
-* **Timer Implementation**
-  * Uses `setInterval` for precise 1-second countdown updates
-  * Implements penalty system that deducts 10 seconds for incorrect answers
-  * Automatically ends quiz when timer reaches zero
-  * Properly cleans up timer using `clearInterval` to prevent memory leaks
+* **JavaScript Timer System**: Implements a sophisticated countdown system for quiz management:
+   * `setInterval`: Creates a precise 1-second countdown timer
+   * `clearInterval`: Properly cleans up timer instances to prevent memory leaks
+   * Penalty system: Deducts 10 seconds for incorrect answers
+   * Auto-submission: Ends quiz when timer reaches zero
 
-* **DOM Manipulation**
-  * Dynamic creation and removal of question elements
-  * Real-time updates of timer and score displays
-  * Event delegation for handling answer selections
-  * Efficient cleanup of child elements using `removeChild`
+* **DOM Manipulation**: Extensive use of DOM methods for dynamic content updates:
+   * `createElement`: Generates new elements for questions and answer choices
+   * `removeChild`: Efficiently cleans up DOM elements between questions
+   * `setAttribute`: Sets classes and attributes for styling and functionality
+   * `innerHTML/textContent`: Updates content for questions, timer, and scores
 
-* **State Management**
-  * Manages quiz state without framework assistance
-  * Tracks current question index, timer value, and score
-  * Handles transitions between quiz phases (pre-game, questions, post-game)
-  * Maintains separate view states for different game sections
+* **Local Storage Integration**: Manages persistent data storage for high scores:
+   * `localStorage.setItem`: Stores high scores and user initials
+   * `localStorage.getItem`: Retrieves stored score data
+   * `JSON.parse/stringify`: Handles data conversion for storage
+   * Score sorting: Implements leaderboard ordering functionality
 
-* **Local Storage Integration**
-  * Persistent storage of high scores using `localStorage`
-  * JSON parsing and stringifying for data storage
-  * Sorted leaderboard implementation
-  * Score clearing functionality
+* **Event Handling System**: Manages all user interactions:
+   * Click events: Controls quiz navigation and answer selection
+   * Submit events: Handles score submission and user initials
+   * View state events: Manages transitions between quiz phases
+   * Back/Clear buttons: Controls quiz reset and score management
 
-* **Event Handling**
-  * Click event listeners for quiz navigation
-  * Answer selection validation
-  * Score submission processing
-  * View state management for high scores display
+* **State Management**: Tracks various aspects of quiz progress:
+   * Question tracking: Manages current question index and available questions
+   * Score calculation: Computes final score based on remaining time
+   * View states: Handles transitions between pre-game, questions, and post-game
+   * Error states: Manages timer and score edge cases
 
-* **Error Prevention**
-  * Guards against negative timer values
-  * Handles missing local storage data
-  * Prevents multiple timer instances
-  * Manages proper cleanup of DOM elements
-
-* **Code Organization**
-  * Modular function design
-  * Clear separation of concerns
-  * Consistent variable naming conventions
-  * Well-structured question data format
+* **CSS Implementation**: Styles the application for optimal user experience:
+   * Responsive design: Ensures compatibility across devices
+   * Dynamic classes: Changes styles based on quiz state
+   * Transition effects: Provides visual feedback for interactions
+   * Consistent styling: Maintains unified look throughout application
 
 ## Installation
 To run this project locally:
