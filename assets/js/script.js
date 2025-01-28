@@ -123,7 +123,7 @@ function checkAnswer() {
   var resultElement = document.createElement('h4');  // Create an element to display the result
   if (selected === currentQuestion.answer) {
     resultElement.innerText = "Correct!";  // If the answer is correct
-    resultElement.style.color = "Limegreen";  // Set text color to green
+    resultElement.style.color = "#00BF00";  // Set text color to green
   } else {
     resultElement.innerText = "Wrong!";  // If the answer is wrong
     resultElement.style.color = "Red";  // Set text color to red
