@@ -27,7 +27,7 @@ The application combines timing mechanics with score tracking, creating an engag
 The quiz contains 10 questions covering fundamental JavaScript concepts including data types, operators, debugging tools, and basic syntax. Questions range from beginner-friendly topics like variable declaration and console logging to more intermediate concepts like event delegation and type coercion. This makes it an ideal learning tool for developers who are starting their JavaScript journey or looking to reinforce their foundational knowledge.
 
 ### Deployed Site
-Visit the live application at: [kyoriku.github.io/javascript-coding-quiz](https://kyoriku.github.io/javascript-coding-quiz/)
+Visit the live application at: [https://kyoriku.github.io/javascript-coding-quiz/](https://kyoriku.github.io/javascript-coding-quiz/)
 
 ## Features
 * **Dynamic Content Updates**
